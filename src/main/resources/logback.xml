@@ -59,7 +59,7 @@
 	<root level="error">
 		<appender-ref ref="commonFile" />
 		<appender-ref ref="errorFile" />
-		<appender-ref ref="console" />
+		${logback.console}
 	</root>
 
 </configuration>
