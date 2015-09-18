@@ -33,34 +33,6 @@ public class SendSmsReqController
 	private SendSmsReqService	sendSmsReqService ;
 	
 	/**
-	 * http://localhost:8888/smscc/single/thomas.zzw
-	 * Create by : 2015年9月10日 下午7:32:04
-	 */
-	@RequestMapping( value = "/single/{merchantAccount}", produces = "text/plain;charset=UTF-8" )
-	@ResponseBody
-	public String smsCheck( @PathVariable String merchantAccount,
-							HttpServletRequest request )
-	{
-		String code = "FAILD" ;
-		try
-		{
-			logger.info(	"[{}][{}]--Request :[{}]-[{}].",
-							new Object[] { this, sendSmsReqService, merchantAccount } ) ;
-			code = sendSmsReqService.getChannelCodeByAccount( merchantAccount ) ;
-			logger.info(	"{}",
-							code ) ; ;
-		}
-		catch ( Exception e )
-		{
-			logger.error(	"sms check error : [{}].",
-							e.getMessage(),
-							e ) ;
-			return code ;
-		}
-		return code ;
-	}
-	
-	/**
 	 * @return the sendSmsReqService
 	 */
 	public SendSmsReqService getSendSmsReqService()
@@ -75,5 +47,28 @@ public class SendSmsReqController
 	public void setSendSmsReqService( SendSmsReqService sendSmsReqService )
 	{
 		this.sendSmsReqService = sendSmsReqService ;
+	}
+	
+	/**
+	 * http://localhost:8888/smscc/single/thomas.zzw
+	 * Create by : 2015年9月10日 下午7:32:04
+	 */
+	@RequestMapping( value = "/single/{merchantAccount}" , produces = "text/plain;charset=UTF-8" )
+	@ResponseBody
+	public String smsCheck( @PathVariable String merchantAccount , HttpServletRequest request )
+	{
+		String code = "FAILD" ;
+		try
+		{
+			logger.info( "[{}][{}]--Request :[{}]-[{}]." , new Object[] { this , sendSmsReqService , merchantAccount } ) ;
+			code = sendSmsReqService.getChannelCodeByAccount( merchantAccount ) ;
+			logger.info( "{}" , code ) ; ;
+		}
+		catch ( Exception e )
+		{
+			logger.error( "sms check error : [{}]." , e.getMessage() , e ) ;
+			return code ;
+		}
+		return code ;
 	}
 }

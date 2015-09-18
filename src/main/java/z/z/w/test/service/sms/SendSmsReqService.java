@@ -29,8 +29,7 @@ public class SendSmsReqService
 	
 	public String getChannelCodeByAccount( String merchantAccount )
 	{
-		logger.info(	"{}",
-						merchantChannelBandMapper ) ;
+		logger.info( "{}" , merchantChannelBandMapper ) ;
 		return merchantChannelBandMapper.getChannelCodeByAccount( merchantAccount ) ;
 	}
 	
