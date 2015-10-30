@@ -28,6 +28,8 @@ hs_err_pid*
 **/*.project
 **/*.class
 **/*.swp
+**/.gradle
+*.gradle
 **/HttpClientUtil_Test.java
 **/HttpClientUtilTest.java
 
